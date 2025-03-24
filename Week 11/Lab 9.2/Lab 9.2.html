@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SPA - Units Management</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Vue.js -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
+  <!-- Vue Router -->
+  <script src="https://unpkg.com/vue-router@4"></script>
+</head>
+<body>
+  <div id="app" class="container mt-5">
+    <nav>
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <router-link class="nav-link" to="/login">Login</router-link>
+        </li>
+        <li class="nav-item">
+          <router-link class="nav-link" to="/dashboard">Dashboard</router-link>
+        </li>
+      </ul>
+    </nav>
+    <router-view></router-view>
+  </div>
+
+  <script>
+    // Login Component
+    const Login = {
+      template: `
+        <div>
+          <h2>Login</h2>
+          <form @submit.prevent="login">
+            <div class="mb-3">
+              <label for="username" class="form-label">Username</label>
+              <input type="text" id="username" class="form-control" v-model="username" required>
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <input type="password" id="password" class="form-control" v-model="password" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Login</button>
+          </form>
+        </div>
+      `,
+      data() {
+        return {
+          username: '',
+          password: ''
+        };
+      },
+      methods: {
+        login() {
+          if (this.username === 'admin' && this.password === 'admin') {
+            this.$router.push('/dashboard');
+          } else {
+            alert('Invalid credentials!');
+          }
+        }
+      }
+    };
+
+    // Dashboard Component
+    const Dashboard = {
+      template: `
+        <div>
+          <h2>Dashboard</h2>
+          <button class="btn btn-primary mb-3" @click="fetchUnits">Fetch Units</button>
+          <button class="btn btn-success mb-3" @click="addUnit">Add Unit</button>
+          <div v-if="units.length > 0">
+            <table class="table table-striped table-bordered">
+              <thead>
+                <tr>
+                  <th>Unit Code</th>
+                  <th>Description</th>
+                  <th>Credit Points</th>
+                  <th>Type</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="(unit, index) in paginatedUnits" :key="index">
+                  <td>{{ unit.code }}</td>
+                  <td>{{ unit.desc }}</td>
+                  <td>{{ unit.cp }}</td>
+                  <td>{{ unit.type }}</td>
+                  <td>
+                    <button class="btn btn-warning btn-sm me-2" @click="editUnit(index)">Edit</button>
+                    <button class="btn btn-danger btn-sm" @click="deleteUnit(index)">Delete</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <nav>
+              <ul class="pagination justify-content-center">
+                <li class="page-item" :class="{ disabled: currentPage === 1 }">
+                  <button class="page-link" @click="prevPage">Prev</button>
+                </li>
+                <li class="page-item" v-for="page in totalPages" :key="page" :class="{ active: page === currentPage }">
+                  <button class="page-link" @click="goToPage(page)">{{ page }}</button>
+                </li>
+                <li class="page-item" :class="{ disabled: currentPage === totalPages }">
+                  <button class="page-link" @click="nextPage">Next</button>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      `,
+      data() {
+        return {
+          units: [],
+          currentPage: 1,
+          rowsPerPage: 5
+        };
+      },
+      computed: {
+        totalPages() {
+          return Math.ceil(this.units.length / this.rowsPerPage);
+        },
+        paginatedUnits() {
+          const start = (this.currentPage - 1) * this.rowsPerPage;
+          const end = start + this.rowsPerPage;
+          return this.units.slice(start, end);
+        }
+      },
+      methods: {
+        async fetchUnits() {
+          try {
+            const response = await fetch('units.json'); // Ensure this file is in the same directory
+            if (!response.ok) {
+              throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const data = await response.json();
+            this.units = data.units;
+          } catch (error) {
+            console.error('Failed to fetch units:', error);
+          }
+        },
+        addUnit() {
+          const newCode = prompt('Enter Unit Code:');
+          const newName = prompt('Enter Unit Description:');
+          const newCp = parseFloat(prompt('Enter Credit Points:'));
+          const newType = prompt('Enter Unit Type:');
+          if (newCode && newName && !isNaN(newCp) && newType) {
+            this.units.push({ code: newCode, desc: newName, cp: newCp, type: newType });
+          } else {
+            alert('Invalid input. Please try again.');
+          }
+        },
+        editUnit(index) {
+          const updatedCode = prompt('Enter New Unit Code:', this.units[index].code);
+          const updatedName = prompt('Enter New Unit Description:', this.units[index].desc);
+          const updatedCp = parseFloat(prompt('Enter New Credit Points:', this.units[index].cp));
+          const updatedType = prompt('Enter New Unit Type:', this.units[index].type);
+          if (updatedCode && updatedName && !isNaN(updatedCp) && updatedType) {
+            this.units[index] = { code: updatedCode, desc: updatedName, cp: updatedCp, type: updatedType };
+          } else {
+            alert('Invalid input. Please try again.');
+          }
+        },
+        deleteUnit(index) {
+          if (confirm('Are you sure you want to delete this unit?')) {
+            this.units.splice(index, 1);
+          }
+        },
+        prevPage() {
+          if (this.currentPage > 1) this.currentPage--;
+        },
+        nextPage() {
+          if (this.currentPage < this.totalPages) this.currentPage++;
+        },
+        goToPage(page) {
+          this.currentPage = page;
+        }
+      }
+    };
+
+    // Define Routes
+      const routes = [
+  { path: '/login', component: Login },
+  { path: '/dashboard', component: Dashboard },
+  { path: '/:pathMatch(.*)*', redirect: '/login' } // Redirects any unmatched routes to login
+];
+
+    // Create Router
+    const router = VueRouter.createRouter({
+      history: VueRouter.createWebHistory(),
+      routes
+    });
+
+    // Create Vue App
+    const app = Vue.createApp({});
+    app.use(router);
+    app.mount('#app');
+  </script>
+</body>
+</html>
