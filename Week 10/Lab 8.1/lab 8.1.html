@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Marks with Pagination</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Vue.js -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
+</head>
+<body>
+  <div id="app" class="container mt-5">
+    <h1>Student Marks</h1>
+    <!-- Table -->
+    <table class="table table-striped table-bordered">
+      <caption>List of student marks</caption>
+      <thead>
+        <tr>
+          <th scope="col">Student Name</th>
+          <th scope="col">Marks</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="student in paginatedData" :key="student.name">
+          <td>{{ student.name }}</td>
+          <td>{{ student.mark }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Pagination -->
+    <nav>
+      <ul class="pagination justify-content-center">
+        <!-- Previous Page Button -->
+        <li class="page-item" :class="{ disabled: currentPage === 1 }">
+          <button type="button" class="page-link" @click="prevPage">Prev Page</button>
+        </li>
+        <!-- Page Numbers -->
+        <li
+          class="page-item"
+          v-for="page in totalPages"
+          :key="page"
+          :class="{ active: page === currentPage }"
+        >
+          <button type="button" class="page-link" @click="goToPage(page)">{{ page }}</button>
+        </li>
+        <!-- Next Page Button -->
+        <li class="page-item" :class="{ disabled: currentPage === totalPages }">
+          <button type="button" class="page-link" @click="nextPage">Next Page</button>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+  <script>
+    const { createApp } = Vue;
+
+    createApp({
+      data() {
+        return {
+          students: [
+            { name: "Amy", mark: 90 },
+            { name: "Bill", mark: 80 },
+            { name: "Casey", mark: 78 },
+            { name: "David", mark: 84 },
+            { name: "Ella", mark: 76 },
+            { name: "Frank", mark: 82 },
+            { name: "Grace", mark: 89 },
+            { name: "Hank", mark: 74 },
+            { name: "Ivy", mark: 81 },
+            { name: "Jack", mark: 88 },
+            { name: "Stephen", mark: 100 },
+            { name: "Dave", mark: 92 },
+            { name: "Costa", mark: 50 },
+            { name: "Katie", mark: 88 },
+            { name: "James", mark: 84 },
+            { name: "Ellie", mark: 76 },
+            { name: "Luca", mark: 82 },
+            { name: "Blake", mark: 89 },
+            { name: "Katarina", mark: 74 },
+            { name: "Long", mark: 81 },
+            { name: "Jamie", mark: 88 },
+            { name: "Stephanie", mark: 100 },
+            { name: "Kimmy", mark: 74 },
+            { name: "Jacq", mark: 81 },
+            { name: "Fred", mark: 88 },
+            { name: "Victor", mark: 100 }
+          ],
+          currentPage: 1,
+          rowsPerPage: 3,
+        };
+      },
+      computed: {
+        totalPages() {
+          return Math.ceil(this.students.length / this.rowsPerPage);
+        },
+        paginatedData() {
+          const start = (this.currentPage - 1) * this.rowsPerPage;
+          const end = start + this.rowsPerPage;
+          return this.students.slice(start, end);
+        },
+      },
+      methods: {
+        prevPage() {
+          if (this.currentPage > 1) {
+            this.currentPage--;
+          }
+        },
+        nextPage() {
+          if (this.currentPage < this.totalPages) {
+            this.currentPage++;
+          }
+        },
+        goToPage(page) {
+          this.currentPage = page;
+        },
+      },
+    }).mount("#app");
+  </script>
+</body>
+</html>
