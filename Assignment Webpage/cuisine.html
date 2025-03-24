@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Featured Dishes</title>
+    <link rel="stylesheet" href="style/homepage.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+    <div id="app">
+        <header class="bg-warning text-center p-3">
+            <h1>Featured Dishes</h1>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav me-auto">
+                            <li class="nav-item"><a class="nav-link" href="homepage.html">Homepage</a></li>
+                            <li class="nav-item"><a class="nav-link" href="origin.html">Origin</a></li>
+                            <li class="nav-item"><a class="nav-link" href="cuisine.html">Cuisine</a></li>
+                            <li class="nav-item"><a class="nav-link" href="recipe.html">Recipe</a></li>
+                        </ul>
+                        <form class="d-flex">
+                            <input class="form-control me-2" type="search" v-model="searchQuery" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success" type="button" @click="searchDishes">Search</button>
+                        </form>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <section id="featured-dishes" class="container mt-4">
+            <h2 class="text-center">Featured Dishes</h2>
+            <div class="row text-center mt-3 cuisine-grid">
+                <div class="col-md-3" v-for="dish in filteredDishes" :key="dish.name">
+                    <a :href="'recipe.html?dish=' + encodeURIComponent(dish.name)" class="btn btn-warning w-100 cuisine-box">
+                        <img :src="dish.image" class="img-fluid" :alt="dish.name">
+                        <p>{{ dish.name }} - {{ dish.origin }}</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="announcement" class="container mt-4 text-center">
+            <div class="p-3 border rounded bg-light">
+                <p><strong>Click on a dish to see its recipe!</strong></p>
+            </div>
+        </section>
+    </div>
+
+    <footer class="bg-warning text-center p-3 mt-5">
+        <p>&copy; Created by Son Nguyen (103234103). Website isn't official, and images may be taken from other copyrighted pages.</p>
+    </footer>
+
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    searchQuery: "",
+                    dishes: [
+                        { name: "Sushi", origin: "Japan", image: "origin/images/sushi.jpg" },
+                        { name: "Ramen", origin: "Japan", image: "origin/images/ramen.jpg" },
+                        { name: "Kimchi", origin: "Korea", image: "origin/images/kimchi.jpg" },
+                        { name: "Bibimbap", origin: "Korea", image: "origin/images/bibimbap.jpg" },
+                        { name: "Pho", origin: "Vietnam", image: "origin/images/pho.jpg" },
+                        { name: "Banh Mi", origin: "Vietnam", image: "origin/images/bread.jpg" },
+                        { name: "Chicken Rice", origin: "Singapore", image: "origin/images/chickenrice.jpg" },
+                        { name: "Chili Crab", origin: "Singapore", image: "origin/images/crab.jpg" },
+                        { name: "Biryani", origin: "India", image: "origin/images/biryani.jpg" },
+                        { name: "Butter Chicken", origin: "India", image: "origin/images/butterchicken.jpg" },
+                        { name: "Adobo", origin: "Philippines", image: "origin/images/adobo.jpg" },
+                        { name: "Sinigang", origin: "Philippines", image: "origin/images/sinigang.jpg" }
+                    ]
+                };
+            },
+            computed: {
+                filteredDishes() {
+                    if (!this.searchQuery) return this.dishes;
+                    return this.dishes.filter(dish => 
+                        dish.name.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
+                        dish.origin.toLowerCase().includes(this.searchQuery.toLowerCase())
+                    );
+                }
+            }
+        });
+
+        app.mount("#app");
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

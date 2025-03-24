@@ -1,0 +1,201 @@
+{
+        "Adobo": {
+            "ingredients": [
+                { "name": "Chicken or Pork", "obtained": false },
+                { "name": "Soy Sauce", "obtained": false },
+                { "name": "Vinegar", "obtained": false },
+                { "name": "Garlic", "obtained": false },
+                { "name": "Bay Leaves", "obtained": false },
+                { "name": "Black Peppercorns", "obtained": false },
+                { "name": "Onion", "obtained": false },
+                { "name": "Sugar", "obtained": false }
+            ],
+            "steps": [
+                { "text": "Marinate chicken or pork in soy sauce and garlic for 30 minutes.", "completed": false },
+                { "text": "Heat oil in a pan and sauté onion and garlic.", "completed": false },
+                { "text": "Add marinated meat and cook until browned.", "completed": false },
+                { "text": "Pour in vinegar, bay leaves, and peppercorns, then simmer.", "completed": false },
+                { "text": "Add sugar and let simmer until meat is tender.", "completed": false },
+                { "text": "Serve hot with steamed rice.", "completed": false }
+            ]
+        },
+        "Banh Mi": {
+            "ingredients": [
+                { "name": "Baguette", "obtained": false },
+                { "name": "Pickled Carrots and Daikon", "obtained": false },
+                { "name": "Cilantro", "obtained": false },
+                { "name": "Pork or Chicken", "obtained": false },
+                { "name": "Soy Sauce", "obtained": false },
+                { "name": "Mayonnaise", "obtained": false }
+            ],
+            "steps": [
+                { "text": "Slice baguette and spread mayonnaise.", "completed": false },
+                { "text": "Add cooked pork or chicken.", "completed": false },
+                { "text": "Top with pickled vegetables and cilantro.", "completed": false },
+                { "text": "Drizzle with soy sauce and serve.", "completed": false }
+            ]
+        },
+        "Bibimbap": {
+            "ingredients": [
+                { "name": "Rice", "obtained": false },
+                { "name": "Spinach", "obtained": false },
+                { "name": "Carrots", "obtained": false },
+                { "name": "Bean Sprouts", "obtained": false },
+                { "name": "Egg", "obtained": false },
+                { "name": "Gochujang (Chili Paste)", "obtained": false }
+            ],
+            "steps": [
+                { "text": "Cook rice and place in a bowl.", "completed": false },
+                { "text": "Sauté vegetables and place on rice.", "completed": false },
+                { "text": "Top with fried egg and gochujang.", "completed": false },
+                { "text": "Mix well before eating.", "completed": false }
+            ]
+        },
+        "Butter Chicken": {
+            "ingredients": [
+                { "name": "Chicken", "obtained": false },
+                { "name": "Tomatoes", "obtained": false },
+                { "name": "Butter", "obtained": false },
+                { "name": "Cream", "obtained": false },
+                { "name": "Garlic", "obtained": false },
+                { "name": "Spices (Cumin, Garam Masala)", "obtained": false }
+            ],
+            "steps": [
+                { "text": "Marinate chicken with spices.", "completed": false },
+                { "text": "Cook tomatoes and blend into a sauce.", "completed": false },
+                { "text": "Sauté chicken and add sauce.", "completed": false },
+                { "text": "Stir in butter and cream, then serve.", "completed": false }
+            ]
+        },
+        "Biryani": {
+            "ingredients": [
+                { "name": "Basmati Rice", "obtained": false },
+                { "name": "Chicken or Lamb", "obtained": false },
+                { "name": "Yogurt", "obtained": false },
+                { "name": "Onion", "obtained": false },
+                { "name": "Garam Masala", "obtained": false },
+                { "name": "Saffron", "obtained": false }
+            ],
+            "steps": [
+                { "text": "Marinate meat in yogurt and spices.", "completed": false },
+                { "text": "Cook onions until golden brown.", "completed": false },
+                { "text": "Layer meat, rice, and saffron in pot.", "completed": false },
+                { "text": "Steam cook on low heat.", "completed": false },
+                { "text": "Serve with raita or chutney.", "completed": false }
+            ]
+        },
+        "Chicken Rice": {
+            "ingredients": [
+                { "name": "Chicken", "obtained": false },
+                { "name": "Ginger", "obtained": false },
+                { "name": "Garlic", "obtained": false },
+                { "name": "Rice", "obtained": false },
+                { "name": "Soy Sauce", "obtained": false },
+                { "name": "Cucumber", "obtained": false }
+            ],
+            "steps": [
+                { "text": "Boil chicken with ginger and garlic.", "completed": false },
+                { "text": "Cook rice with chicken broth.", "completed": false },
+                { "text": "Slice chicken and serve with rice and sauce.", "completed": false }
+            ]
+        },
+        "Chilli Crab": {
+            "ingredients": [
+                { "name": "Fresh Crab", "obtained": false },
+                { "name": "Tomato Sauce", "obtained": false },
+                { "name": "Chilli Paste", "obtained": false },
+                { "name": "Garlic", "obtained": false },
+                { "name": "Ginger", "obtained": false },
+                { "name": "Egg", "obtained": false }
+            ],
+            "steps": [
+                { "text": "Clean and cut crab into pieces.", "completed": false },
+                { "text": "Sauté garlic, ginger, and chili paste.", "completed": false },
+                { "text": "Add tomato sauce and crab, then cook until done.", "completed": false },
+                { "text": "Stir in beaten egg and serve hot.", "completed": false }
+            ]
+        },
+        "Kimchi": {
+            "ingredients": [
+                { "name": "Napa Cabbage", "obtained": false },
+                { "name": "Salt", "obtained": false },
+                { "name": "Ginger", "obtained": false },
+                { "name": "Garlic", "obtained": false },
+                { "name": "Korean Red Pepper Flakes", "obtained": false },
+                { "name": "Fish Sauce", "obtained": false }
+            ],
+            "steps": [
+                { "text": "Chop napa cabbage and soak in salted water.", "completed": false },
+                { "text": "Make spice paste with garlic, ginger, and red pepper flakes.", "completed": false },
+                { "text": "Mix cabbage with spice paste.", "completed": false },
+                { "text": "Pack into a jar and let ferment for a few days.", "completed": false }
+            ]
+        },
+        "Pho": {
+            "ingredients": [
+                { "name": "Beef Bones", "obtained": false },
+                { "name": "Rice Noodles", "obtained": false },
+                { "name": "Onion", "obtained": false },
+                { "name": "Ginger", "obtained": false },
+                { "name": "Star Anise", "obtained": false },
+                { "name": "Fish Sauce", "obtained": false }
+            ],
+            "steps": [
+                { "text": "Simmer beef bones to create broth.", "completed": false },
+                { "text": "Toast spices (star anise, cinnamon, ginger) and add to broth.", "completed": false },
+                { "text": "Cook rice noodles separately.", "completed": false },
+                { "text": "Assemble pho bowl with noodles, sliced beef, and herbs.", "completed": false },
+                { "text": "Ladle hot broth over the bowl and serve.", "completed": false }
+            ]
+        },
+        "Ramen": {
+            "ingredients": [
+                { "name": "Pork Belly", "obtained": false },
+                { "name": "Ramen Noodles", "obtained": false },
+                { "name": "Miso/Soy Sauce", "obtained": false },
+                { "name": "Ginger", "obtained": false },
+                { "name": "Garlic", "obtained": false },
+                { "name": "Softboiled Egg", "obtained": false }
+            ],
+            "steps": [
+                { "text": "Prepare broth with miso or soy sauce.", "completed": false },
+                { "text": "Cook pork belly and slice thinly.", "completed": false },
+                { "text": "Boil ramen noodles and add to bowl.", "completed": false },
+                { "text": "Top with pork, egg, and green onions.", "completed": false }
+            ]
+        },
+        "Sinigang": {
+            "ingredients": [
+                { "name": "Pork or Shrimp", "obtained": false },
+                { "name": "Tamarind Paste", "obtained": false },
+                { "name": "Tomato", "obtained": false },
+                { "name": "Onion", "obtained": false },
+                { "name": "Water Spinach", "obtained": false },
+                { "name": "Radish", "obtained": false }
+            ],
+            "steps": [
+                { "text": "Boil meat with tamarind paste and onions.", "completed": false },
+                { "text": "Add tomatoes and radish, cook until tender.", "completed": false },
+                { "text": "Add water spinach and let simmer briefly.", "completed": false },
+                { "text": "Serve hot with rice.", "completed": false }
+            ]
+        },
+        "Sushi": {
+            "ingredients": [
+                { "name": "Sushi Rice", "obtained": false },
+                { "name": "Nori (Seaweed)", "obtained": false },
+                { "name": "Fresh Salmon or Tuna", "obtained": false },
+                { "name": "Soy Sauce", "obtained": false },
+                { "name": "Wasabi", "obtained": false },
+                { "name": "Rice Vinegar", "obtained": false }
+            ],
+            "steps": [
+                { "text": "Cook sushi rice and season with rice vinegar.", "completed": false },
+                { "text": "Place nori on sushi mat and spread rice evenly.", "completed": false },
+                { "text": "Add sliced fish on top of the rice.", "completed": false },
+                { "text": "Roll sushi tightly using the sushi mat.", "completed": false },
+                { "text": "Slice sushi rolls and serve with soy sauce and wasabi.", "completed": false }
+            ]
+        }
+    }
+    

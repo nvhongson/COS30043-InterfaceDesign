@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asian Cuisine Explorer</title>
+    <link rel="stylesheet" href="style/homepage.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Navigation Panel -->
+        <header class="bg-warning text-center p-3">
+            <h1>Asian Cuisine Explorer</h1>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="#navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav me-auto">
+                            <li class="nav-item" v-for="link in navLinks" :key="link.name">
+                                <a class="nav-link" :href="link.url">{{ link.name }}</a>
+                            </li>
+                        </ul>
+                        <form class="d-flex" @submit.prevent="search">
+                            <input class="form-control me-2" type="search" placeholder="Search" v-model="query">
+                            <button class="btn btn-outline-success" type="submit">Search</button>
+                        </form>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Introduction -->
+        <section id="introduction" class="container mt-4">
+            <p class="text-center">Explore the rich and diverse flavors of Asian cuisine. Learn about different cultures, recipes, and ingredients that make Asian food unique.</p>
+        </section>
+
+        <!-- Cuisine List -->
+        <section id="popular-cuisines" class="container mt-4">
+            <h2 class="text-center">Popular Cuisines</h2>
+            <div class="row text-center mt-3 cuisine-grid">
+                <div class="col-md-3" v-for="cuisine in cuisines" :key="cuisine.name">
+                    <a :href="cuisine.link" class="btn btn-warning w-100 cuisine-box">
+                        <img :src="cuisine.image ? cuisine.image : 'images/default.jpg'" :alt="cuisine.name ? cuisine.name : 'Cuisine Image'" class="img-fluid">
+                        <p>{{ cuisine.name }}</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-warning text-center p-3 mt-5">
+            <p>&copy; Created by Son Nguyen (103234103). Website isn't official and images can be taken from other copyrighted page.</p>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.js"></script>
+    <script src="vuejs/search.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+{
+    "China": {
+        "description": "Chinese cuisine is one of the world’s most diverse and influential culinary traditions, characterized by bold flavors, rich history, and regional variety.",
+        "dishes": [
+            { "name": "Dim Sum", "image": "images/dimsum.jpg" },
+            { "name": "Peking Duck", "image": "images/pekingduck.jpg" },
+            { "name": "Mapo Tofu", "image": "images/mapotofu.jpg" }
+        ]
+    },
+    "Japan": {
+        "description": "Japanese cuisine is known for its simplicity, precision, and balance of flavors, focusing on seasonal ingredients and presentation.",
+        "dishes": [
+            { "name": "Sushi", "image": "images/sushi.jpg" },
+            { "name": "Ramen", "image": "images/ramen.jpg" },
+            { "name": "Tempura", "image": "images/tempura.jpg" }
+        ]
+    },
+    "Korea": {
+        "description": "Korean cuisine features bold flavors, fermented ingredients, and a balance of spicy, sweet, sour, and savory elements.",
+        "dishes": [
+            { "name": "Kimchi", "image": "images/kimchi.jpg" },
+            { "name": "Bibimbap", "image": "images/bibimbap.jpg" },
+            { "name": "Samgyeopsal (Korean BBQ)", "image": "images/kbbq.jpg" }
+        ]
+    },
+    "Vietnam": {
+        "description": "Vietnamese cuisine is known for its fresh ingredients, balanced flavors, and use of herbs and fermented sauces.",
+        "dishes": [
+            { "name": "Pho", "image": "images/pho.jpg" },
+            { "name": "Banh Mi", "image": "images/bread.jpg" },
+            { "name": "Gỏi Cuốn (Spring Rolls)", "image": "images/springroll.jpg" }
+        ]
+    },
+    "Singapore": {
+        "description": "Singaporean cuisine is a mix of Chinese, Malay, Indian, and Peranakan flavors, known for its hawker culture.",
+        "dishes": [
+            { "name": "Hainanese Chicken Rice", "image": "images/chickenrice.jpg" },
+            { "name": "Chilli Crab", "image": "images/crab.jpg" },
+            { "name": "Laksa", "image": "images/laksa.jpg" }
+        ]
+    },
+    "India": {
+        "description": "Indian cuisine is famous for its diverse use of spices, regional variations, and bold flavors.",
+        "dishes": [
+            { "name": "Butter Chicken", "image": "images/butterchicken.jpg" },
+            { "name": "Biryani", "image": "images/biryani.jpg" },
+            { "name": "Masala Dosa", "image": "images/masala.jpg" }
+        ]
+    },
+    "Philippines": {
+        "description": "Philippine cuisine blends indigenous traditions with Spanish, Chinese, and American influences, creating bold flavors.",
+        "dishes": [
+            { "name": "Adobo", "image": "images/adobo.jpg" },
+            { "name": "Sinigang", "image": "images/sinigang.jpg" },
+            { "name": "Lechon", "image": "images/lechon.jpg" }
+        ]
+    },
+    "Thailand": {
+        "description": "Thai cuisine is famous for its balance of sweet, sour, salty, and spicy flavors, using fragrant herbs and fresh ingredients.",
+        "dishes": [
+            { "name": "Pad Thai", "image": "images/padthai.jpg" },
+            { "name": "Tom Yum", "image": "images/tomyum.jpg" },
+            { "name": "Green Curry", "image": "images/curry.jpg" }
+        ]
+    }
+}

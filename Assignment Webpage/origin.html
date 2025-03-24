@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Origins of Asian Cuisine</title>
+    <link rel="stylesheet" href="style/homepage.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Navigation Panel -->
+        <header class="bg-warning text-center p-3">
+            <h1>Origins of Asian Cuisine</h1>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="#navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav me-auto">
+                            <li class="nav-item" v-for="link in navLinks" :key="link.name">
+                                <a class="nav-link" :href="link.url">{{ link.name }}</a>
+                            </li>
+                        </ul>
+                        <form class="d-flex" @submit.prevent="search">
+                            <input class="form-control me-2" type="search" placeholder="Search" v-model="query">
+                            <button class="btn btn-outline-success" type="submit">Search</button>
+                        </form>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Cuisine Selection -->
+        <section class="container mt-4 text-center">
+            <label for="cuisineSelect"><b>Select a Cuisine:</b></label>
+            <select id="cuisineSelect" class="form-select w-50 mx-auto" v-model="selectedCuisine">
+                <option v-for="(info, name) in cuisines" :value="name">{{ name }}</option>
+            </select>
+        </section>
+
+        <!-- Dynamic Content -->
+        <section id="origin-details" class="container mt-4" v-if="selectedCuisine">
+            <h2 class="text-center">{{ selectedCuisine }}</h2>
+            <p class="text-center">{{ cuisines[selectedCuisine].description }}</p>
+
+            <h3 class="text-center">Popular Dishes</h3>
+            <div class="row text-center mt-3">
+                <div class="col-md-4" v-for="dish in cuisines[selectedCuisine].dishes" :key="dish.name">
+                    <img :src="dish.image" class="img-fluid" :alt="dish.name">
+                    <p>{{ dish.name }}</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-warning text-center p-3 mt-5">
+            <p>&copy; Created by Son Nguyen (103234103). Website isn't official and images can be taken from other copyrighted page.</p>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.js"></script>
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    navLinks: [
+                        { name: "Homepage", url: "homepage.html" },
+                        { name: "Origin", url: "origin.html" },
+                        { name: "Cuisine", url: "cuisine.html" },
+                        { name: "Recipe", url: "recipe.html" }
+                    ],
+                    query: "",
+                    cuisines: {},
+                    selectedCuisine: ""
+                };
+            },
+            mounted() {
+                fetch("cuisines.json")
+                    .then(response => response.json())
+                    .then(data => {
+                        this.cuisines = data;
+                    })
+                    .catch(error => console.error("Error loading cuisines:", error));
+            },
+            methods: {
+                search() {
+                    let queryLower = this.query.toLowerCase();
+                    let found = Object.keys(this.cuisines).find(name => name.toLowerCase().includes(queryLower));
+                    if (found) {
+                        this.selectedCuisine = found;
+                    } else {
+                        alert("No matching results found.");
+                    }
+                }
+            }
+        });
+
+        app.mount("#app");
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
